@@ -49,7 +49,7 @@ def post_desenvoledor():
     return jsonify({'status': 'sucesso', 'mensagem': f'Registro incluído id = {len(desenvolvedores) - 1}'})
 
 # lista todos os desenvolvedores
-@app.route('/dev/listar', methods=['GET'])
+@app.route('/dev/', methods=['GET'])
 def listar_desenvolvedores():
     return jsonify(desenvolvedores)
 
