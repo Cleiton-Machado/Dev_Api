@@ -4,10 +4,12 @@ import json
 app = Flask(__name__)
 
 desenvolvedores = [
-    {'nome': 'Cleiton', 
+    {'id': 0,
+     'nome': 'Cleiton', 
      'habilidades': ['python', 'csharp']
      },
-    {'nome': 'Vagner',
+    {'id': 1,
+     'nome': 'Vagner',
      'habilidades': ['java', 'cobol']
     }
 ]
@@ -42,13 +44,14 @@ def delete_desenvolvedor(id):
 @app.route('/dev/', methods=['POST'])
 def post_desenvoledor():
     dados = json.loads(request.data)
+    dados['id'] = str(len(desenvolvedores))
     desenvolvedores.append(dados)
     return jsonify({'status': 'sucesso', 'mensagem': f'Registro incluído id = {len(desenvolvedores) - 1}'})
 
 # lista todos os desenvolvedores
 @app.route('/dev/listar', methods=['GET'])
 def listar_desenvolvedores():
-    return desenvolvedores
+    return jsonify(desenvolvedores)
 
 if __name__ == '__main__':
     app.run(debug=True)
