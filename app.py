@@ -44,7 +44,7 @@ def delete_desenvolvedor(id):
 @app.route('/dev/', methods=['POST'])
 def post_desenvoledor():
     dados = json.loads(request.data)
-    dados['id'] = str(len(desenvolvedores))
+    dados['id'] = len(desenvolvedores)
     desenvolvedores.append(dados)
     return jsonify({'status': 'sucesso', 'mensagem': f'Registro incluído id = {len(desenvolvedores) - 1}'})
 
